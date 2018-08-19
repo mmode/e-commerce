@@ -9,13 +9,18 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/shopping-cart">Shoping Cart</a>
       </li>
-      <li ngbDropdown class="nav-item dropdown">
-        <a ngbDropdownToggle class="nav-link dropdown-toggle">Username</a>
+      <ng-template #anonymousUser>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+      </ng-template>
+      <li *ngIf="auth.user$ | async as user; else anonymousUser" ngbDropdown class="nav-item dropdown">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle">{{ user.displayName }}</a>
         <div ngbDropdownMenu class="dropdown-menu">
           <a class="dropdown-item" routerLink="my/orders">My Orders</a>
           <a class="dropdown-item" routerLink="admin/orders">Manage Orders</a>
           <a class="dropdown-item" routerLink="admin/products">Manage Products</a>
-          <a class="dropdown-item">Logout</a>
+          <a class="dropdown-item" (click)="logout()">Logout</a>
         </div>
       </li>
     </ul>
