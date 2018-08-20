@@ -1,3 +1,5 @@
+import { AppUser } from './../models/app-user';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 
@@ -17,5 +19,9 @@ export class UserService {
       name: user.displayName,
       email: user.email
     });
+  }
+
+  get(uid: string): Observable<AppUser> {
+    return this.db.object<AppUser>(`/users/${uid}`).valueChanges();
   }
 }
