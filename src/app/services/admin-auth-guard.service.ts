@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { AuthService } from './auth.service';
 import { UserService } from './user.service';
@@ -17,10 +17,9 @@ export class AdminAuthGuardService implements CanActivate {
   ) { }
 
   canActivate(route, state: RouterStateSnapshot): Observable<boolean> {
-    return this.auth.user$.pipe(
-      switchMap(user => this.userService.get(user.uid)),
-      map(appUser => {
-        if (appUser.isAdmin) return true;
+    return this.auth.appUser$.pipe(
+      map(user => {
+        if (user.isAdmin) return true;
         return false;
       })
     );
