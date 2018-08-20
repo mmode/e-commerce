@@ -1,3 +1,4 @@
+import { CategoryService } from './../../services/category.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-form.component.scss']
 })
 export class ProductFormComponent implements OnInit {
+  categories$: any;
 
-  constructor() { }
+  constructor(
+    private categoryService: CategoryService
+  ) { }
 
   ngOnInit() {
+    this.categories$ = this.categoryService.getAll();
   }
 
 }
