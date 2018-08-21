@@ -12,7 +12,7 @@ export class CategoryService {
   ) { }
 
   getAll() {
-    return this.db.list('/categories').snapshotChanges()
+    return this.db.list('/categories', ref => ref.orderByChild('name')).snapshotChanges()
       .pipe(
         map(actions => actions.map(a => {
           const data = a.payload.val();
