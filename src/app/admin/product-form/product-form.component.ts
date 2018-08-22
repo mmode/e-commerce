@@ -22,5 +22,4 @@ export class ProductFormComponent implements OnInit {
   save(product) {
     this.productService.create(product);
   }
-
 }
