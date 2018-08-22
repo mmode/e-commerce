@@ -29,7 +29,14 @@ export class ProductService {
   }
 
   get(productId: string): Observable<AppProduct> {
-    return this.db.object<AppProduct>(`/products/${productId}`).valueChanges();
+    return this.db.object<AppProduct>(`/products/${productId}`)
+      .snapshotChanges()
+      .pipe(
+        map(action => {
+          const data = action.payload.val();
+          return { key: action.payload.key, ...data };
+        })
+      );
   }
 
   update(productId: string, product: AppProduct): Promise<void> {
