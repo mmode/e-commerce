@@ -15,17 +15,14 @@ import { ProductService } from '../services/product.service';
 export class ProductsComponent implements OnInit {
   products: AppProduct[] = [];
   filteredProducts: AppProduct[] = [];
-  categories$;
   category: string;
 
   constructor(
     private productService: ProductService,
-    private categoryService: CategoryService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.categories$ = this.categoryService.getAll();
 
     this.productService.getAll().pipe(
       switchMap(products => {
