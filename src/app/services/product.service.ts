@@ -22,6 +22,10 @@ export class ProductService {
         const data = a.payload.val();
         return { key: a.payload.key, ...data };
       }))
-  );
+    );
+  }
+
+  get(productId) {
+    return this.db.object(`/products/${productId}`).valueChanges();
   }
 }
