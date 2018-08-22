@@ -1,6 +1,9 @@
-import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+import { AppProduct } from './../models/app-product';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +14,12 @@ export class ProductService {
     private db: AngularFireDatabase
   ) { }
 
-  create(product) {
+  create(product: AppProduct) {
     return this.db.list('/products').push(product);
   }
 
-  getAll() {
-    return this.db.list('/products').snapshotChanges()
+  getAll(): Observable<AppProduct[]> {
+    return this.db.list<AppProduct>('/products').snapshotChanges()
     .pipe(
       map(actions => actions.map(a => {
         const data = a.payload.val();
@@ -25,15 +28,15 @@ export class ProductService {
     );
   }
 
-  get(productId) {
-    return this.db.object(`/products/${productId}`).valueChanges();
+  get(productId: string): Observable<AppProduct> {
+    return this.db.object<AppProduct>(`/products/${productId}`).valueChanges();
   }
 
-  update(productId, product) {
+  update(productId: string, product: AppProduct): Promise<void> {
     return this.db.object(`/products/${productId}`).update(product);
   }
 
-  delete(productId: string) {
+  delete(productId: string): Promise<void> {
     return this.db.object(`/products/${productId}`).remove();
   }
 }

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { take } from 'rxjs/operators';
 
+import { AppProduct } from './../../models/app-product';
 import { CategoryService } from './../../services/category.service';
 import { ProductService } from './../../services/product.service';
-import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-form',
@@ -12,7 +13,7 @@ import { take } from 'rxjs/operators';
 })
 export class ProductFormComponent implements OnInit {
   categories$: any;
-  product = {};
+  product: AppProduct | {} = {};
   id: string;
 
   constructor(
@@ -33,7 +34,7 @@ export class ProductFormComponent implements OnInit {
     }
   }
 
-  save(product) {
+  save(product: AppProduct) {
     if (this.id) {
       this.productService.update(this.id, product);
     } else {

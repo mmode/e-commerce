@@ -1,6 +1,8 @@
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+
+import { AppProduct } from '../../models/app-product';
 import { ProductService } from './../../services/product.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin-products',
@@ -8,8 +10,8 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./admin-products.component.scss']
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
-  products = [];
-  filteredProducts = [];
+  products: AppProduct[] = [];
+  filteredProducts: AppProduct[] = [];
   subscription: Subscription;
 
   constructor(
