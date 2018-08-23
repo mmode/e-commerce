@@ -8,8 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./product-card.component.scss']
 })
 export class ProductCardComponent implements OnInit {
-  @Input('product') product: AppProduct;
+  @Input() product: AppProduct;
   @Input() showActions = true;
+  @Input() shoppingCart;
 
   constructor(
     private cartService: ShoppingCartService
@@ -20,5 +21,11 @@ export class ProductCardComponent implements OnInit {
 
   addToCart(product: AppProduct) {
     this.cartService.addToCart(product);
+  }
+
+  getQuantity() {
+    if (!this.shoppingCart) return 0;
+    const item = this.shoppingCart.items[this.product.key];
+    return item ? item.quantity : 0;
   }
 }
