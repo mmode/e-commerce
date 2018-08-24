@@ -5,10 +5,12 @@ export class ShoppingCart {
     items: ShoppingCartItem[] = [];
 
     constructor(public itemsMap: { [productId: string]: ShoppingCartItem }) {
+        this.itemsMap = itemsMap || {};
+
         for (const productId in itemsMap) {
             if (productId) {
                 const item = itemsMap[productId];
-                this.items.push(new ShoppingCartItem(item.product, item.quantity));
+                this.items.push(new ShoppingCartItem({ key: productId, ...item }));
             }
         }
     }
