@@ -14,6 +14,10 @@ export class ShoppingCartService {
     private db: AngularFireDatabase
   ) { }
 
+  async clearCart() {
+    const cartId = await this.getOrCreateCartId();
+    return this.db.object(`/shopping-carts/${cartId}`).remove();
+  }
 
   addToCart(product: AppProduct) {
     this.updateItem(product, 1);
