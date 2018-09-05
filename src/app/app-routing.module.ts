@@ -25,7 +25,7 @@ const routes: Routes = [
       AuthGuardService
     ]
   },
-  { path: 'order-success', component: OrderSuccessComponent,
+  { path: 'order-success/:id', component: OrderSuccessComponent,
     canActivate: [
       AuthGuardService
     ]
