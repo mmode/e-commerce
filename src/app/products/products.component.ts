@@ -1,12 +1,12 @@
-import { ShoppingCartService } from './../services/shopping-cart.service';
-import { switchMap } from 'rxjs/operators';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CategoryService } from './../services/category.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 import { AppProduct } from '../models/app-product';
+import { ShoppingCart } from '../models/shopping-cart';
 import { ProductService } from '../services/product.service';
+import { ShoppingCartService } from './../services/shopping-cart.service';
 
 @Component({
   selector: 'app-products',
@@ -17,7 +17,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   products: AppProduct[] = [];
   filteredProducts: AppProduct[] = [];
   category: string;
-  cart: { key: string; };
+  cart: ShoppingCart;
   subscription: Subscription;
 
   constructor(
