@@ -1,7 +1,6 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
+import { SharedModule } from '../shared/shared.module';
 import { CheckOutComponent } from './components/check-out/check-out.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
@@ -11,12 +10,9 @@ import { ShippingFormComponent } from './components/shipping-form/shipping-form.
 import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary/shopping-cart-summary.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ShoppingRoutingModule } from './shopping-routing.module';
-import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
     SharedModule,
     ShoppingRoutingModule
   ],
