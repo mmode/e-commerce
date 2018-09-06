@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { AuthService } from './auth.service';
-import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +11,7 @@ import { UserService } from './user.service';
 export class AdminAuthGuardService implements CanActivate {
 
   constructor(
-    private auth: AuthService,
-    private userService: UserService
+    private auth: AuthService
   ) { }
 
   canActivate(route, state: RouterStateSnapshot): Observable<boolean> {

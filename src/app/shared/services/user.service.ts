@@ -1,9 +1,9 @@
-import { AppUser } from './../models/app-user';
-import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-
 import { User } from 'firebase/app';
+import { Observable } from 'rxjs';
+
+import { AppUser } from '../models/app-user';
 
 @Injectable({
   providedIn: 'root'

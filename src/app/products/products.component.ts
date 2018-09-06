@@ -3,10 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-import { AppProduct } from '../models/app-product';
-import { ShoppingCart } from '../models/shopping-cart';
+import { AppProduct } from '../shared/models/app-product';
+import { ShoppingCart } from '../shared/models/shopping-cart';
 import { ProductService } from '../services/product.service';
-import { ShoppingCartService } from './../services/shopping-cart.service';
+import { ShoppingCartService } from '../services/shopping-cart.service';
 
 @Component({
   selector: 'app-products',
