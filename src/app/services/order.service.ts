@@ -12,9 +12,15 @@ export class OrderService {
     private cartService: ShoppingCartService
   ) { }
 
-  placeOrder(order) {
-    const result = this.db.list('/orders').push(order);
+  async placeOrder(order) {
+    const result = await this.db.list('/orders').push(order);
     this.cartService.clearCart();
     return result;
+  }
+
+
+  getOrderByUser(userId: string) {
+    return this.db.list('/orders', ref => ref.orderByChild('userId').equalTo(userId))
+      .valueChanges();
   }
 }
