@@ -1,14 +1,16 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" routerLink="/">e</a>
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+  <a class="navbar-brand" routerLink="/">
+    <fa-icon icon="globe-americas"></fa-icon> e-commerce
+  </a>
   <button class="navbar-toggler" type="button">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <a class="nav-link" routerLink="/shopping-cart">
-          Shoping Cart 
+          <fa-icon icon="shopping-cart"></fa-icon> 
           <span *ngIf="cart$ | async as cart" class="badge badge-danger badge-pill">{{ cart.totalItemsCount }}</span>
         </a>
       </li>
