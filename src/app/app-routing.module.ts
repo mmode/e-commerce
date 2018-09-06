@@ -1,17 +1,15 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './core/components/login/login.component';
 import { ProductsComponent } from './shopping/components/products/products.component';
-
-const routes: Routes = [
-  { path: '', component: ProductsComponent },
-  { path: 'login', component: LoginComponent },
-];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot([
+      { path: '', component: ProductsComponent },
+      { path: 'login', component: LoginComponent },
+    ])
   ],
   providers: [],
   exports: [
