@@ -78,5 +78,5 @@
       <div *ngIf="city.errors?.maxlength">Max {{ city.errors.maxlength.requiredLength }} characters.</div>
     </div>
   </div>
-  <button class="btn btn-primary">Place order</button>
+  <button [disabled]="!f.valid" class="btn btn-primary">Place order</button>
 </form>
