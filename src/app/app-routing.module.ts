@@ -1,9 +1,9 @@
-import { AdminAuthGuardService } from './services/admin-auth-guard.service';
+import { AdminAuthGuardService } from './admin/services/admin-auth-guard.service';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
-import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
+import { AdminOrdersComponent } from './admin/components/admin-orders/admin-orders.component';
+import { AdminProductsComponent } from './admin/components/admin-products/admin-products.component';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -13,7 +13,7 @@ import { ProductsComponent } from './products/products.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { ProductFormComponent } from './admin/components/product-form/product-form.component';
 
 const routes: Routes = [
   { path: '', component: ProductsComponent },
@@ -35,39 +35,13 @@ const routes: Routes = [
       AuthGuardService
     ]
   },
-  { path: 'admin/products/new', component: ProductFormComponent,
-    canActivate: [
-      AuthGuardService,
-      AdminAuthGuardService
-    ]
-  },
-  { path: 'admin/products/:id', component: ProductFormComponent,
-    canActivate: [
-      AuthGuardService,
-      AdminAuthGuardService
-    ]
-  },
-  { path: 'admin/products', component: AdminProductsComponent,
-    canActivate: [
-      AuthGuardService,
-      AdminAuthGuardService
-    ]
-  },
-  { path: 'admin/orders', component: AdminOrdersComponent,
-    canActivate: [
-      AuthGuardService,
-      AdminAuthGuardService
-    ]
-  },
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes)
   ],
-  providers: [
-    AuthGuardService
-  ],
+  providers: [],
   exports: [
     RouterModule
   ],
