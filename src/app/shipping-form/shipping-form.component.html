@@ -1,0 +1,82 @@
+<form #f="ngForm" (ngSubmit)="placeOrder(f.value)">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      #name="ngModel"
+      [(ngModel)]="shipping.name"
+      name="name" 
+      id="name" 
+      type="text" 
+      class="form-control" 
+      [ngClass]="{'is-invalid': name.touched && name.invalid}"
+      required
+      minlength="3"
+      maxlength="60">
+    <div class="invalid-feedback">
+      <div *ngIf="name.errors?.required">This field is required.</div>
+      <div *ngIf="name.errors?.minlength">Missing {{ name.errors.minlength.requiredLength - name.errors.minlength.actualLength }} characters.</div>
+      <div *ngIf="name.errors?.maxlength">Max {{ name.errors.maxlength.requiredLength }} characters.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="addressLine1">Address</label>
+    <input
+      #addressLine1="ngModel"
+      [(ngModel)]="shipping.addressLine1"
+      name="addressLine1" 
+      id="addressLine1" 
+      type="text"
+      placeholder="Line 1"
+      class="form-control" 
+      [ngClass]="{'is-invalid': addressLine1.touched && addressLine1.invalid}"
+      required
+      minlength="3"
+      maxlength="60"
+    >
+    <div class="invalid-feedback">
+      <div *ngIf="addressLine1.errors?.required">This field is required.</div>
+      <div *ngIf="addressLine1.errors?.minlength">Missing {{ addressLine1.errors.minlength.requiredLength - addressLine1.errors.minlength.actualLength }} characters.</div>
+      <div *ngIf="addressLine1.errors?.maxlength">Max {{ addressLine1.errors.maxlength.requiredLength }} characters.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <!-- Input address Line 2 -->
+    <input
+    #addressLine2="ngModel"
+    [(ngModel)]="shipping.addressLine2"
+    name="addressLine2" 
+    id="addressLine2" 
+    type="text"
+    placeholder="Line 2"
+    class="form-control" 
+    [ngClass]="{'is-invalid': addressLine2.touched && addressLine2.invalid}"
+    minlength="3"
+    maxlength="60"
+  >
+  <div class="invalid-feedback">
+    <div *ngIf="addressLine2.errors?.minlength">Missing {{ addressLine2.errors.minlength.requiredLength - addressLine2.errors.minlength.actualLength }} characters.</div>
+    <div *ngIf="addressLine2.errors?.maxlength">Max {{ addressLine2.errors.maxlength.requiredLength }} characters.</div>
+  </div>
+  </div>
+  <div class="form-group">
+    <label for="city">City</label>
+    <input
+      #city="ngModel"
+      [(ngModel)]="shipping.city"
+      name="city" 
+      id="city" 
+      type="text"
+      placeholder="Line 1"
+      class="form-control" 
+      [ngClass]="{'is-invalid': city.touched && city.invalid}"
+      required
+      minlength="3"
+      maxlength="60">
+    <div class="invalid-feedback">
+      <div *ngIf="city.errors?.required">This field is required.</div>
+      <div *ngIf="city.errors?.minlength">Missing {{ city.errors.minlength.requiredLength - city.errors.minlength.actualLength }} characters.</div>
+      <div *ngIf="city.errors?.maxlength">Max {{ city.errors.maxlength.requiredLength }} characters.</div>
+    </div>
+  </div>
+  <button class="btn btn-primary">Place order</button>
+</form>
