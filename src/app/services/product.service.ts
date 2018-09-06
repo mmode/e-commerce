@@ -3,7 +3,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AppProduct } from '../models/app-product';
+import { AppProduct } from '../shared/models/app-product';
 
 @Injectable({
   providedIn: 'root'
